@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine?</title>
+    <title>Bits, Bytes & Beyond</title>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
 
@@ -268,7 +269,12 @@
             'Hint: The answer is not in the no button.'
         ];
 
+        let noLocked = false;
+
         const moveNoButton = () => {
+            if (noLocked) {
+                return;
+            }
             const maxX = Math.min(window.innerWidth - 140, 500);
             const maxY = 120;
             const randX = Math.random() * maxX - maxX / 2;
@@ -285,6 +291,10 @@
             status.textContent = 'Yay! Date locked in. I AM SO EXCITED HEHE.';
             yesBtn.textContent = 'Best decision ever';
             yesBtn.style.transform = 'scale(1.05)';
+            noLocked = true;
+            noBtn.style.transform = 'translate(0, 0)';
+            noBtn.disabled = true;
+            noBtn.style.opacity = '0.6';
         });
     </script>
 </body>
